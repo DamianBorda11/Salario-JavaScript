@@ -18,7 +18,9 @@ const transporte= 249095;
 const salarioIntegral= 22761765;
 const valorTributario= 52.37;
 
-// Operaciones
+// Porcentajes
+
+const saludPorcentaje= 0.4;
 
 
 
