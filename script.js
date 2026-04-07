@@ -21,10 +21,14 @@ const valorTributario= 52.37;
 // Porcentajes
 
 const saludPorcentaje= 0.4;
+const pension= 0.4;
 
+// Acciones
 
+if (edad<18) {
+    
+}
 
+// Operaciones
 
-
-
-
+let ingresoBase= salarioMinimo+transporte+ 
