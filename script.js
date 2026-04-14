@@ -31,4 +31,4 @@ if (edad<18) {
 
 // Operaciones
 
-let ingresoBase= salarioMinimo+transporte+ 
+return ingresoBase= salarioMinimo+transporte;
