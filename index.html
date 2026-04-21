@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salario</title>
+  <meta charset="UTF-8">
+  <title>Calculadora Nómina</title>
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <script src="script.js"></script>
+
+<h2>Datos del Usuario</h2>
+
+<input type="text" id="nombre" placeholder="Nombre completo"><br><br>
+<input type="number" id="edad" placeholder="Edad"><br><br>
+
+<select id="tipoDocumento">
+  <option value="">Seleccione documento</option>
+  <option value="RC">RC</option>
+  <option value="TI">TI</option>
+  <option value="CC">CC</option>
+  <option value="CE">CE</option>
+  <option value="PP">PP</option>
+</select><br><br>
+
+<input type="text" id="numeroDocumento" placeholder="Número documento"><br><br>
+
+<button onclick="cargarDatosUsuario()">Siguiente</button>
+
+<hr>
+
+<div id="seccionSalario" style="display:none;">
+
+  <h2>Datos Salariales</h2>
+
+  <input type="number" id="salario" placeholder="Salario"><br><br>
+  <input type="number" id="comisiones" placeholder="Comisiones"><br><br>
+  <input type="number" id="horasextra" placeholder="Horas extra"><br><br>
+
+  <select id="riesgo">
+    <option value="">Nivel de riesgo</option>
+    <option value="1">Mínimo</option>
+    <option value="2">Bajo</option>
+    <option value="3">Medio</option>
+    <option value="4">Alto</option>
+    <option value="5">Máximo</option>
+  </select><br><br>
+
+  <button onclick="cargarDatosSalario()">Calcular</button>
+
+</div>
+
+<hr>
+
+<h2>Resultados</h2>
+<div id="resultado"></div>
+
 </body>
 </html>
