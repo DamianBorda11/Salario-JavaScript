@@ -1,6 +1,4 @@
-// =======================
 // VARIABLES
-// =======================
 
 let nombreCompleto = "";
 let edad = 0;
@@ -9,34 +7,25 @@ let numeroDocumento = "";
 
 let salario = 0;
 let comisiones = 0;
-let horasextra = 0;
+let horasExtra = 0;
 let riesgo = "";
 
-// =======================
 // VALORES
-// =======================
 
 const salarioMinimo = 1750905;
 const transporte = 249095;
 
-// =======================
 // PORCENTAJES
-// =======================
 
 const saludPorcentaje = 0.04;
 const pensionPorcentaje = 0.04;
-
-    // =====================
     // CASO PENSIONADO
-    // =====================
 
-        let pension = salario * pensionPorcentaje;
+    let pension = salario * pensionPorcentaje;
 
-    // =====================
     // CASO NORMAL (25-59)
-    // =====================
 
-    let totalDevengado = salario + comisiones + horasextra;
+    let totalDevengado = salario + comisiones + horasExtra;
 
     // IBC
     let ingresoBase = totalDevengado * 0.7;
@@ -47,9 +36,8 @@ const pensionPorcentaje = 0.04;
         auxilioTransporte = transporte;
     }
 
-    // Salud y pensión
+    // Salud
     let salud = ingresoBase * saludPorcentaje;
-    let pension = ingresoBase * pensionPorcentaje;
 
     // Fondo solidaridad
     let fondoSolidaridad = 0;
