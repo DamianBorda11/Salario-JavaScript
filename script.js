@@ -47,3 +47,15 @@ const pensionPorcentaje = 0.04;
 
     // ARL
     let arl = 0;
+
+    //condicionales
+    if (edad <= 18) {
+        alert("No puedes trabajar, eres menor de edad.");
+    } else if (edad >= 18 && edad <= 25) {
+        alert("No puedes seguir, eres beneficiario.");
+    } else if (edad >= 26 && edad <= 59) {
+        let salario = parseInt(prompt("Salario mensual:"));
+    } else if (edad >= 60) {
+        let salario = parseInt(prompt("Salario mensual:"));
+        let pension = parseInt(prompt("Pensión:"));
+    }
