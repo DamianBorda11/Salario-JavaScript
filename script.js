@@ -1,61 +1,66 @@
-// VARIABLES
+function calcularNomina() {
 
-let nombreCompleto = "";
-let edad = 0;
-let tipoDocumento = "";
-let numeroDocumento = "";
+  // DATOS USUARIO
+  let nombre = document.getElementById("nombreCompleto").value;
+  let edad = parseInt(document.getElementById("edad").value);
+  let salario = parseFloat(document.getElementById("salario").value);
+  let horasExtra = parseFloat(document.getElementById("horasExtra").value);
+  let comisiones = 0;
+  let riesgo = "1";
 
-let salario = 0;
-let comisiones = 0;
-let horasExtra = 0;
-let riesgo = "";
+  // VALORES
+  const salarioMinimo = 1750905;
+  const transporte = 249095;
 
-// VALORES
+  const saludPorcentaje = 0.04;
+  const pensionPorcentaje = 0.04;
 
-const salarioMinimo = 1750905;
-const transporte = 249095;
+  // VALIDACIÓN 
+  if (edad < 18) {
+    alert("No puedes trabajar, eres menor de edad.");
+    return;
+  }
 
-// PORCENTAJES
+  if (edad < 25) {
+    alert("Eres beneficiario, no continúas.");
+    return;
+  }
 
-const saludPorcentaje = 0.04;
-const pensionPorcentaje = 0.04;
-    // CASO PENSIONADO
+  if (edad >= 25 && edad < 60) {
+    alert("Eres beneficiario, continúas.");
+    comisiones = salario * 0.1;
+    horasExtra = horasExtra * 20000;
+  }
 
+  if (edad >= 60) {
     let pension = salario * pensionPorcentaje;
+    alert("Pago de pensión: " + pension);
+    return;
+  }
 
-    // CASO NORMAL (25-59)
+  // CÁLCULOS
+  let totalDevengado = salario + comisiones + horasExtra;
 
-    let totalDevengado = salario + comisiones + horasExtra;
+  let ingresoBase = totalDevengado * 0.7;
 
-    // IBC
-    let ingresoBase = totalDevengado * 0.7;
+  let auxilioTransporte = 0;
+  if (salario <= 2 * salarioMinimo) {
+    auxilioTransporte = transporte;
+  }
 
-    // Auxilio transporte
-    let auxilioTransporte = 0;
-    if (salario <= (2 * salarioMinimo)) {
-        auxilioTransporte = transporte;
-    }
+  let salud = ingresoBase * saludPorcentaje;
+  let pension = ingresoBase * pensionPorcentaje;
 
-    // Salud
-    let salud = ingresoBase * saludPorcentaje;
+  let fondoSolidaridad = 0;
+  if (ingresoBase >= 4 * salarioMinimo) {
+    fondoSolidaridad = ingresoBase * 0.01;
+  }
 
-    // Fondo solidaridad
-    let fondoSolidaridad = 0;
-    if (ingresoBase >= (4 * salarioMinimo)) {
-        fondoSolidaridad = ingresoBase * 0.01;
-    }
+  let arlPorcentaje = 0.00522;
+  let arl = ingresoBase * arlPorcentaje;
 
-    // ARL
-    let arl = 0;
+  let deducciones = salud + pension + fondoSolidaridad + arl;
 
-    //condicionales
-    if (edad <= 18) {
-        alert("No puedes trabajar, eres menor de edad.");
-    } else if (edad >= 18 && edad <= 25) {
-        alert("No puedes seguir, eres beneficiario.");
-    } else if (edad >= 26 && edad <= 59) {
-        let salario = parseInt(prompt("Salario mensual:"));
-    } else if (edad >= 60) {
-        let salario = parseInt(prompt("Salario mensual:"));
-        let pension = parseInt(prompt("Pensión:"));
-    }
+  let total = totalDevengado + auxilioTransporte - deducciones;
+
+}
