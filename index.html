@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Calculadora Nómina</title>
+  <script src="script.js"></script>
 </head>
 
-<body>
+<body>  
+  
+<h1>Calculadora de Nómina</h1>
+
 <form>
 
   <section id="datosEmpleado">
@@ -27,7 +31,7 @@
   <label for="numeroDocumento">Número de documento:</label>
   <input type="text" id="numeroDocumento" name="numeroDocumento" required>
 
-<button type="button" onclick="calcularNomina()">Calcular Nómina</button>
+
 
   </section>
   
@@ -41,8 +45,10 @@
   <label for="horasExtra">Horas extra:</label>
   <input type="number" id="horasExtra" name="horasExtra" required>
 
+  <label for="riesgo">Nivel de Riesgo:</label>
+  <input type="number" id="riesgo" name="riesgo" required>
+
   </section>
 </form>
 </body>
-<script src="script.js"></script>
 </html>
