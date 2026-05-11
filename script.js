@@ -64,3 +64,9 @@ function calcularNomina() {
   let total = totalDevengado + auxilioTransporte - deducciones;
 
 }
+
+// TOPES
+
+let edadlimite = Math.max(100, Math.min(0, edad));
+alert("Edad límite: 100 años");
+return;
