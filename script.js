@@ -11,11 +11,11 @@ const pensionPorcentaje = 0.04;
 // CONFIRMAR DATOS EMPLEADO
 function confirmarDatosEmpleado() {
 
-  let nombre = document.getElementById("nombreCompleto").value.trim();
+  let nombre =
+    document.getElementById("nombreCompleto").value.trim();
 
-  let edad = parseInt(
-    document.getElementById("edad").value
-  );
+  let edad =
+    parseInt(document.getElementById("edad").value);
 
   let tipoDocumento =
     document.getElementById("tipoDocumento").value;
@@ -23,7 +23,7 @@ function confirmarDatosEmpleado() {
   let numeroDocumento =
     document.getElementById("numeroDocumento").value.trim();
 
-  // VALIDAR CAMPOS
+  // VALIDAR CAMPOS VACÍOS
   if (
     nombre === "" ||
     isNaN(edad) ||
@@ -35,31 +35,75 @@ function confirmarDatosEmpleado() {
     return;
   }
 
-  // VALIDAR EDAD
+  // VALIDAR NOMBRE
+  if (nombre.length < 3 || nombre.length > 60) {
+
+    alert(
+      "El nombre debe tener entre 3 y 60 caracteres."
+    );
+
+    return;
+  }
+
+  // VALIDAR EDAD NEGATIVA
+  if (edad < 0) {
+
+    alert("La edad no puede ser negativa.");
+    return;
+  }
+  
+
+  // VALIDAR EDAD MAYOR A 100
+  if (edad > 100) {
+
+    alert("Edad no válida.");
+    return;
+  }
+
+  // MENOR DE EDAD
   if (edad < 18) {
 
-    alert("No puedes trabajar, eres menor de edad.");
+    alert(
+      "No puedes trabajar, eres menor de edad."
+    );
+
     return;
   }
 
+  // BENEFICIARIO
   if (edad < 25) {
 
-    alert("Usuario beneficiario.");
+    alert(
+      "Usuario beneficiario, no aplica cálculo."
+    );
+
     return;
   }
 
-  if (edad < 60) {
+  // VALIDAR DOCUMENTO
+  if (isNaN(numeroDocumento)) {
 
-    alert("Usuario activo.");
+    alert(
+      "El número de documento debe contener solo números."
+    );
+
     return;
   }
-  if (edad >= 60) {
 
-    alert("Usuario pensionado.");
+  // VALIDAR LONGITUD DOCUMENTO
+  if (
+    numeroDocumento.length < 10 ||
+    numeroDocumento.length > 11
+  ) {
+
+    alert(
+      "El documento debe tener entre 10 y 11 caracteres."
+    );
+
     return;
   }
 
-  // CONFIRMAR
+  // CONFIRMACIÓN
   datosConfirmados = true;
 
   alert("Datos confirmados correctamente.");
@@ -72,7 +116,10 @@ function calcularNomina() {
   // VALIDAR CONFIRMACIÓN
   if (!datosConfirmados) {
 
-    alert("Primero debes confirmar los datos.");
+    alert(
+      "Primero debes confirmar los datos."
+    );
+
     return;
   }
 
@@ -80,47 +127,111 @@ function calcularNomina() {
   let nombre =
     document.getElementById("nombreCompleto").value;
 
-  let edad = parseInt(
-    document.getElementById("edad").value
-  );
+  let edad =
+    parseInt(document.getElementById("edad").value);
 
-  let salario = parseFloat(
-    document.getElementById("salario").value
-  );
+  let salario =
+    parseFloat(document.getElementById("salario").value);
 
-  let comisiones = parseFloat(
-    document.getElementById("comisiones").value
-  );
+  let comisiones =
+    parseFloat(document.getElementById("comisiones").value);
 
-  let horasExtra = parseFloat(
-    document.getElementById("horasExtra").value
-  );
+  let horasExtra =
+    parseFloat(document.getElementById("horasExtra").value);
 
   let riesgo =
     document.getElementById("riesgo").value;
 
-  // VALIDAR NÚMEROS
+  // VALIDAR CAMPOS VACÍOS
   if (
     isNaN(salario) ||
     isNaN(comisiones) ||
     isNaN(horasExtra)
   ) {
 
-    alert("Ingresa valores válidos.");
+    alert(
+      "Completa todos los datos laborales."
+    );
+
+    return;
+  }
+
+  // VALIDAR SALARIO NEGATIVO
+  if (salario < 0) {
+
+    alert(
+      "El salario no puede ser negativo."
+    );
+
+    return;
+  }
+
+  // VALIDAR SALARIO MÁXIMO
+  if (salario > 100000000) {
+
+    alert(
+      "Valor fuera del rango permitido."
+    );
+
+    return;
+  }
+
+  // VALIDAR COMISIONES NEGATIVAS
+  if (comisiones < 0) {
+
+    alert(
+      "Las comisiones no pueden ser negativas."
+    );
+
+    return;
+  }
+
+  // VALIDAR COMISIONES MÁXIMAS
+  if (comisiones > 50000000) {
+
+    alert(
+      "Comisiones fuera del rango permitido."
+    );
+
+    return;
+  }
+
+  // VALIDAR HORAS EXTRA NEGATIVAS
+  if (horasExtra < 0) {
+
+    alert(
+      "Las horas extra no pueden ser negativas."
+    );
+
+    return;
+  }
+
+  // VALIDAR HORAS EXTRA MÁXIMAS
+  if (horasExtra > 20000000) {
+
+    alert(
+      "Horas extra fuera del rango permitido."
+    );
+
     return;
   }
 
   // PENSIONADO
   if (edad >= 60) {
 
-    let pension = salario * pensionPorcentaje;
+    let pension =
+      salario * pensionPorcentaje;
 
-    alert("Pago pensión: $" + pension);
+    alert(
+      "Pago pensión: $" + pension
+    );
 
     return;
   }
 
   // TOTAL DEVENGADO
+  horasExtra = horasExtra * 20000;
+
   let totalDevengado =
     salario +
     comisiones +
