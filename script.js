@@ -21,14 +21,14 @@ function confirmarDatosEmpleado() {
     document.getElementById("tipoDocumento").value;
 
   let numeroDocumento =
-    document.getElementById("numeroDocumento").value.trim();
+    parseInt(document.getElementById("numeroDocumento").value.trim());
 
   // VALIDAR CAMPOS VACÍOS
   if (
     nombre === "" ||
     isNaN(edad) ||
     tipoDocumento === "" ||
-    numeroDocumento === ""
+    isNaN(numeroDocumento)
   ) {
 
     alert("Completa todos los datos.");
